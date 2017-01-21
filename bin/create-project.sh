@@ -30,6 +30,7 @@ case "$1" in
     ###################################
     "neos")
         execInDir "$CODE_DIR" "docker run --rm -v $(pwd):/app composer/composer:alpine create-project typo3/neos-base-distribution \"$CODE_DIR\""
+        echo "\nNOTE: You probably want to change the WEB_DOCUMENT_ROOT env in your etc/environment.yml to '/app/Web/' and run 'docker-composer up -d app' to populate the change."
         ;;
 
     ###################################
