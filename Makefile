@@ -79,7 +79,7 @@ root:
 #############################
 
 scheduler:
-	docker exec -it $$(docker-compose ps -q app) typo3/cli_dispatch.phpsh scheduler $(ARGS)
+	docker-compose exec --user application app /bin/bash -c '"$$WEB_DOCUMENT_ROOT"/typo3/cli_dispatch.phpsh scheduler $(ARGS)'
 
 #############################
 # Argument fix workaround
