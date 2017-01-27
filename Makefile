@@ -16,6 +16,7 @@ create:
 #############################
 
 up:
+	if [ -z "$$(docker-compose ps -q)" ]; then docker-compose pull; fi
 	docker-compose up -d
 
 start:
@@ -30,7 +31,7 @@ state:
 rebuild:
 	docker-compose stop
 	docker-compose rm --force app
-	docker-compose build --no-cache
+	docker-compose build --no-cache --pull
 	docker-compose up -d
 
 #############################
